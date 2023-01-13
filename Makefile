@@ -9,8 +9,7 @@ MAKEFILE_DIR := $(notdir $(patsubst %/,%,$(dir $(MAKEFILE_PATH))))
 GUIX-TIME-MACHINE = guix time-machine -C $(MAKEFILE_DIR)/guix/channels.scm
 GUIX-SHELL = $(GUIX-TIME-MACHINE) -- shell -f $(MAKEFILE_DIR)/guix/guix.scm
 GUIX-DEV-SHELL = $(GUIX-TIME-MACHINE) -- shell -D -f $(MAKEFILE_DIR)/guix/guix.scm
-PORT = /dev/ttyACM0
-CONTAINER = --container --expose=$(PORT) --preserve='^DISPLAY$$' --preserve='^TERM$$'
+CONTAINER = --container --preserve='^DISPLAY$$' --preserve='^TERM$$'
 GUIX-CONTAINER = $(GUIX-SHELL) $(CONTAINER)
 GUIX-DEV-CONTAINER = $(GUIX-DEV-SHELL) $(CONTAINER)
 
@@ -21,10 +20,6 @@ guix-dev-container:
 .PHONY: ipython-shell
 ipython-shell:
 	$(GUIX-DEV-CONTAINER) -- ipython
-
-.PHONY: serial-shell
-serial-shell:
-	$(GUIX-DEV-CONTAINER) picocom -- picocom -b 9600 -f n -y n -d 8 -p 1 -c $(PORT)
 
 .PHONY: installed-shell
 installed-shell:

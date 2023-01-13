@@ -36,7 +36,7 @@
                          python-ipython))
     (propagated-inputs (list
                         ncurses
-                        python-pyserial-asyncio))
+                        python-example))
     (home-page "")
     (synopsis "")
     (description "")

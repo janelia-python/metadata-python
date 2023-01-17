@@ -29,3 +29,8 @@
   "Tangle and export org file"
   (progn (tangle-org org-file)
          (export-org org-file)))
+
+(defun extract-src-content (name)
+  (save-excursion
+    (org-babel-goto-named-src-block name)
+    (org-element-property :value (org-element-at-point))))

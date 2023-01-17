@@ -11,6 +11,7 @@
  (gnu packages emacs-xyz)
  (gnu packages python-build)
  (gnu packages python-xyz)
+ (gnu packages imagemagick)
  (gnu packages version-control)
  (gnu packages ncurses)
  (guix-janelia packages python-janelia)
@@ -33,10 +34,11 @@
                          emacs-ox-gfm
                          python-wheel
                          python-twine
-                         python-ipython))
+                         python-ipython
+                         imagemagick))
     (propagated-inputs (list
                         ncurses
-                        python-example))
+                        ))
     (home-page "")
     (synopsis "")
     (description "")

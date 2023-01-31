@@ -1,6 +1,7 @@
-;; This file is generated automatically from metadata.org
+;; This file is generated automatically from metadata
 ;; File edits may be overwritten!
 (require 'org)
+(require 'ox-org)
 
 (eval-after-load "org"
   '(require 'ox-gfm nil t))
@@ -17,7 +18,7 @@
     (error "INFILE must be an org file."))
   (org-babel-tangle-file org-file))
 
-(defun export-org (org-file)
+(defun export-org-to-markdown (org-file)
   "Export org file to gfm file"
   (unless (string= "org" (file-name-extension org-file))
     (error "INFILE must be an org file."))
@@ -28,9 +29,9 @@
 (defun process-org (org-file)
   "Tangle and export org file"
   (progn (tangle-org org-file)
-         (export-org org-file)))
+         (export-org-to-markdown org-file)))
 
-(defun extract-src-content (name)
-  (save-excursion
-    (org-babel-goto-named-src-block name)
-    (org-element-property :value (org-element-at-point))))
+
+(setq enable-local-variables nil)
+(setq tangle-external-files t)
+(setq python-package-dir (concat "../" "example"))
